@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.views import LoginView
 from .models import Document
+from .models import Member
 
 
 def render_login(request):
@@ -49,24 +50,30 @@ def all_members(request):
     return render(request, 'all_members.html')
 
 
-def add_member(request):
-    return render(request, 'add_member.html')
+# def add_member(request):
+#     return render(request, 'add_member.html')
 
 
 def executive(request):
     return render(request, 'executive.html')
 
 
+# def active_members(request):
+#     return render(request, 'active_members.html')
+
 def active_members(request):
-    return render(request, 'active_members.html')
+    active_members = Member.objects.filter(status='Active')
+    return render(request, 'active_members.html', {'active_members': active_members})
 
 
 def affiliate_members(request):
-    return render(request, 'affiliate_members.html')
+    affiliate_members = Member.objects.filter(status='Affiliate')
+    return render(request, 'affiliate_members.html', {'affiliate_members': affiliate_members})
 
 
 def patrons(request):
-    return render(request, 'patrons.html')
+    patrons = Member.objects.filter(status='Patron')
+    return render(request, 'patrons.html',{'patrons':patrons})
 
 # def document(request):
 #     if request.method == 'POST':
@@ -92,3 +99,51 @@ def document(request):
         success_message = 'Document saved successfully.'
 
     return render(request, 'document.html', {'success_message': success_message})
+
+
+def add_member(request):
+    if request.method == 'POST':
+        first_name = request.POST['first_name']
+        middle_name = request.POST['middle_name']
+        surname = request.POST['surname']
+        gender = request.POST['gender']
+        contact_number = request.POST['contact_number']
+        house_number = request.POST['house_number']
+        hometown = request.POST['hometown']
+        email = request.POST['email']
+        date_of_birth = request.POST['date_of_birth']
+        profile_image = request.FILES.get('profile_image')
+        previous_school = request.POST['previous_school']
+        current_school = request.POST['current_school']
+        occupation = request.POST['occupation']
+        course = request.POST['course']
+        level = request.POST['level']
+        field = request.POST['field']
+        date_of_joining = request.POST['date_of_joining']
+        status = request.POST['status']
+
+        member = Member(
+            first_name=first_name,
+            middle_name=middle_name,
+            surname=surname,
+            gender=gender,
+            contact_number=contact_number,
+            house_number=house_number,
+            hometown=hometown,
+            email=email,
+            date_of_birth=date_of_birth,
+            profile_image=profile_image,
+            previous_school=previous_school,
+            current_school=current_school,
+            occupation=occupation,
+            course=course,
+            level=level,
+            field=field,
+            date_of_joining=date_of_joining,
+            status=status
+        )
+        member.save()
+
+        # Redirect to a success page or perform any additional actions
+        messages.success(request, 'Member added successfully.')
+    return render(request, 'add_member.html')
