@@ -15,7 +15,7 @@ class Member(models.Model):
     GENDER_CHOICES = [
         ('M', 'Male'),
         ('F', 'Female'),
-        ('O', 'Other'),
+        # ('O', 'Other'),
     ]
 
     STATUS_CHOICES = [

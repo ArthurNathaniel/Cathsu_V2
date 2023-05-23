@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # 'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,3 +133,11 @@ MEDIA_URL = '/media/'
 LOGIN_REDIRECT_URL = 'render_login'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# JAZZMIN_SETTINGS = {
+#     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+#     "site_header": "Library",
+#     # title of the window (Will default to current_admin_site.site_title if absent or None)
+#     "site_title": "Cathsu Management System",
+# }

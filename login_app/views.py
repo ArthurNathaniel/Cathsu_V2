@@ -37,8 +37,20 @@ def admin_dashboard(request):
         messages.error(request, "Please login first to access this page.")
         return HttpResponseRedirect(reverse('render_login') + "?next=" + request.path)
     else:
-        username = request.user.username
-        return render(request, "admin_dashboard.html", {'username': username})
+        # username = request.user.username
+        active_members = Member.objects.filter(status='Active')
+        patrons = Member.objects.filter(status='Patron')
+        affiliate_members = Member.objects.filter(status='Affiliate')
+        male = Member.objects.filter(gender='M')
+        female = Member.objects.filter(gender='F')
+        context = {
+            'active_members': active_members,
+            'affiliate_members':affiliate_members,
+            'patrons': patrons,
+            'male': male,
+            'female': female,
+        }
+        return render(request, "admin_dashboard.html", context)
 
 
 def perform_logout(request):
