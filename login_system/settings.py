@@ -29,10 +29,11 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
-    # 'jazzmin',
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,16 +77,16 @@ WSGI_APPLICATION = 'login_system.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
-    'default' : dj_database_url.parse('postgres://cathsu_db_user:b4Ok4cGJzVqkfAKGHISOa59m2SaC7ZCj@dpg-chmg3kj3cv24nunc9d2g-a.oregon-postgres.render.com/cathsu_db')
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+# DATABASES = {
+#     'default' : dj_database_url.parse('postgres://cathsu_db_user:b4Ok4cGJzVqkfAKGHISOa59m2SaC7ZCj@dpg-chmg3kj3cv24nunc9d2g-a.oregon-postgres.render.com/cathsu_db')
+# }
 
 
 # Password validation
