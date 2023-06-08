@@ -84,20 +84,20 @@ WSGI_APPLICATION = 'login_system.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default' : dj_database_url.parse('postgres://cathsu_db_user:b4Ok4cGJzVqkfAKGHISOa59m2SaC7ZCj@dpg-chmg3kj3cv24nunc9d2g-a.oregon-postgres.render.com/cathsu_db')
-# }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cathsu_db',
-        'USER': 'cathsu_db_user',
-        'PASSWORD': 'b4Ok4cGJzVqkfAKGHISOa59m2SaC7ZCj',
-        'HOST': 'dpg-chmg3kj3cv24nunc9d2g-a',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.parse('postgresql://postgres:bceC8iRJL0PUvzNHQQ3h@containers-us-west-177.railway.app:7963/railway')
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'cathsu_db',
+#         'USER': 'cathsu_db_user',
+#         'PASSWORD': 'b4Ok4cGJzVqkfAKGHISOa59m2SaC7ZCj',
+#         'HOST': 'ccc.oregon-postgres.render.com',
+#         'PORT': '5432',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
